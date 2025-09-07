@@ -56,7 +56,20 @@ services:
       SET_CONTAINER_TIMEZONE: 'true'
       CONTAINER_TIMEZONE: America/Santiago
       TZ: America/Santiago
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13378:80
+    volumes:
+      - ./abs-config:/config
+      - ./abs-metadata:/metadata
+    environment:
+      SET_CONTAINER_TIMEZONE: 'true'
+      CONTAINER_TIMEZONE: America/Santiago
+      TZ: America/Santiago
 volumes:
   cwa-config:
   cwa-ingest:
   cwa-plugins:
+  abs-config:
+  abs-metadata:
