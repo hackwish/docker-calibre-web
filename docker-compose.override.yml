@@ -1,0 +1,15 @@
+services:
+  calibre-web-automated:
+    environment:
+      # Hardcover API Key required for Hardcover as a Metadata Provider, get one here: https://docs.hardcover.app/api/getting-started/
+      HARDCOVER_TOKEN: your_hardcover_api_key_here
+      # If your library is on a network share (e.g., NFS/SMB), disable WAL to reduce locking issues
+      # Accepts: true/false (default: false)
+      NETWORK_SHARE_MODE: false
+      # Override the default port (8083) for the web server.
+      # Accepts any valid port number.
+      CWA_PORT_OVERRIDE: 8083
+    restart: unless-stopped
+    volumes:
+      # If you don't have an existing library, CWA will automatically create one at the bind provided here
+      - /path/to/your/calibre/library:/calibre-library
