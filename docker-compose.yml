@@ -35,7 +35,7 @@ services:
       TZ: America/Santiago
       APP_ENV: prod
       UID: 1000
-      GID: 100
+      GID: 1000
       CWA_DB_PATH: /auth/app.db  # Comment out to disable authentication
     ports:
       - 8084:8084

@@ -21,7 +21,9 @@ services:
       MAX_CONCURRENT_DOWNLOADS: 3
       DOWNLOAD_PROGRESS_UPDATE_INTERVAL: 5
       LOG_LEVEL: info
-      USE_BOOK_TITLE: true
+      USE_BOOK_TITLE: false
+      # PRIORITIZE_WELIB: false
+      # AA_DONATOR_KEY: your_aa_donator_key_here
   audiobookbay-downloader:
     environment:
       # Set your preferred language for audiobook searches (e.g., 'en' for English)
@@ -40,3 +42,7 @@ services:
       ABB_HOSTNAME: 'audiobookbay.is' #Default
       NAV_LINK_NAME: Open Audiobook Player #Optional
       NAV_LINK_URL: https://audiobooks.yourdomain.com/ #Optional
+  audiobookshelf:
+    volumes:
+      - </path/to/audiobooks>:/audiobooks
+      - </path/to/podcasts>:/podcasts
