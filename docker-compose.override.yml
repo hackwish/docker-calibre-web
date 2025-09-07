@@ -13,3 +13,30 @@ services:
     volumes:
       # If you don't have an existing library, CWA will automatically create one at the bind provided here
       - /path/to/your/calibre/library:/calibre-library
+  calibre-web-automated-book-downloader:
+    environment:
+      # Set your preferred language for book searches (e.g., 'en' for English)
+      BOOK_LANGUAGE: es
+      # Queue management settings
+      MAX_CONCURRENT_DOWNLOADS: 3
+      DOWNLOAD_PROGRESS_UPDATE_INTERVAL: 5
+      LOG_LEVEL: info
+      USE_BOOK_TITLE: true
+  audiobookbay-downloader:
+    environment:
+      # Set your preferred language for audiobook searches (e.g., 'en' for English)
+      AUDIOBOOK_LANGUAGE: es
+      # Set the maximum number of concurrent downloads
+      MAX_CONCURRENT_DOWNLOADS: 3
+      # Set the download directory to match the ingest directory of calibre-web-automated
+      DOWNLOAD_CLIENT: transmission # Change to delugeweb, transmission or qbittorrent s
+      DL_SCHEME: http
+      DL_HOST: 192.168.1.123
+      DL_PORT: 8080
+      DL_USERNAME: admin
+      DL_PASSWORD: pass
+      DL_CATEGORY: abb-downloader
+      SAVE_PATH_BASE: /audiobooks
+      ABB_HOSTNAME: 'audiobookbay.is' #Default
+      NAV_LINK_NAME: Open Audiobook Player #Optional
+      NAV_LINK_URL: https://audiobooks.yourdomain.com/ #Optional

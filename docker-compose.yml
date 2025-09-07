@@ -30,9 +30,6 @@ services:
     restart: unless-stopped
     environment:
       FLASK_PORT: 8084
-      LOG_LEVEL: info
-      BOOK_LANGUAGE: en
-      USE_BOOK_TITLE: true
       SET_CONTAINER_TIMEZONE: 'true'
       CONTAINER_TIMEZONE: America/Santiago
       TZ: America/Santiago
@@ -40,9 +37,6 @@ services:
       UID: 1000
       GID: 100
       CWA_DB_PATH: /auth/app.db  # Comment out to disable authentication
-      # Queue management settings
-      MAX_CONCURRENT_DOWNLOADS: 3
-      DOWNLOAD_PROGRESS_UPDATE_INTERVAL: 5
     ports:
       - 8084:8084
     volumes:
@@ -59,17 +53,9 @@ services:
     container_name: audiobookbay-downloader
     restart: unless-stopped
     environment:
-      - DOWNLOAD_CLIENT=transmission # Change to delugeweb, transmission or qbittorrent s
-      - DL_SCHEME=http
-      - DL_HOST=192.168.1.123
-      - DL_PORT=8080
-      - DL_USERNAME=admin
-      - DL_PASSWORD=pass
-      - DL_CATEGORY=abb-downloader
-      - SAVE_PATH_BASE=/audiobooks
-      - ABB_HOSTNAME='audiobookbay.is' #Default
-      - NAV_LINK_NAME=Open Audiobook Player #Optional
-      - NAV_LINK_URL=https://audiobooks.yourdomain.com/ #Optional
+      SET_CONTAINER_TIMEZONE: 'true'
+      CONTAINER_TIMEZONE: America/Santiago
+      TZ: America/Santiago
 volumes:
   cwa-config:
   cwa-ingest:
